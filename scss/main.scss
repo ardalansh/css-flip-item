@@ -1,0 +1,149 @@
+/* 
+Ardalan Shahverdi
+Freelance Front-End Developer
+ardalansh@outlook.com
+https://github.com/ardalansh
+https://www.instagram.com/ardalansh
+*/
+
+// Begin mixin
+@mixin transition($property) {
+  -webkit-transition: $property;
+  -moz-transition: $property;
+  -o-transition: $property;
+  transition: $property;
+}
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -moz-transform: $property;
+  -o-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@mixin transform-style($property) {
+  -webkit-transform-style: $property;
+  -moz-transform-style: $property;
+  -o-transform-style: $property;
+  -ms-transform-style: $property;
+  transform-style: $property;
+}
+@mixin box-shadow($property) {
+  -webkit-box-shadow: $property;
+  -moz-box-shadow: $property;
+  box-shadow: $property;
+}
+@mixin backface-visibility($property) {
+  -webkit-backface-visibility: $property;
+  -moz-backface-visibility: $property;
+  backface-visibility: $property;
+}
+// End mixin
+
+// Colors
+$white: #fff;
+$light-gray: #dedfde;
+$dark-gray: #323332;
+$bg-color: #708090;
+$salamon:#FA8072;
+// Begin demo style
+body {
+  font-size: 16px; //1rem
+  background-color: $bg-color;
+}
+.wrapper {
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+
+}
+.header {
+  margin: 3rem 0;
+  color: $white;
+}
+
+.footer {
+  margin-top:4rem;
+  padding-top:0.5rem;
+  border-top: 1px solid $light-gray;
+  color:$light-gray;
+  &__link{
+    color:$white;
+    text-decoration: none;
+    &:hover{
+      color:$salamon;
+    }
+  }
+}
+// End demo style
+
+// Begin flip item style
+.item {
+  /* item speed goes here */
+  position: relative;
+  @include transition(0.8s ease-in-out);
+  @include transform-style(preserve-3d);
+
+  /* entire container, keeps perspective */
+  &-container {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  /* item when hovered */
+  &-container:hover &,
+  &-container.hover &,
+  &-container.flip & {
+    @include transform(rotateY(180deg));
+  }
+  &-container,
+  &__front,
+  &__back {
+    width: 360px;
+    height: 480px;
+  }
+  &__front,
+  &__back {
+    /* hide back of pane during swap */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    @include backface-visibility(hidden);
+    @include box-shadow(0 1px 15px 1px $dark-gray);
+  }
+
+  /* front pane, placed above back */
+  &__front {
+    z-index: 2;
+    @include transform(rotateY(0deg));
+  }
+
+  /* back, initially hidden pane */
+  &__back {
+    @include transform(rotateY(180deg));
+  }
+
+  /* Item Title style */
+  &--title {
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    width: 100%;
+    height: 100%;
+    color: $dark-gray;
+    font-size: 1.25rem;
+  }
+}
+// End flip item style

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Flip Item</title>
+    <link rel="stylesheet" href="css/main.min.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1 class="header">CSS Flip Item</h1>
+
+      <!-- Begin flip item -->
+      <div class="item-container" ontouchstart="this.classList.toggle('hover');">
+        <div class="item">
+          <div class="item__front">
+            <!-- front item content -->
+            <h2 class="item--title d-flex flex-column justify-content-center align-items-center">Front side</h2>
+          </div>
+          <div class="item__back">
+            <!-- back item content -->
+            <h2 class="item--title d-flex flex-column justify-content-center align-items-center">Back side</h2>
+          </div>
+        </div>
+      </div>
+      <!-- End flip item -->
+
+      <!-- Begin copy right container-->
+      <footer class="footer">
+        <a href="https://www.instagram.com/ardalansh/" class="footer__link" target="_blank">Instagram: @ardalansh</a>
+        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+        <a href="https://github.com/ardalansh" class="footer__link" target="_blank">GitHub: ardalansh</a>
+      </footer>
+      <!-- End copy right container-->
+    </div>
+  </body>
+</html>
